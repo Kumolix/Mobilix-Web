@@ -1,0 +1,30 @@
+name: Stats
+on:
+  schedule: [{cron: "17 */6 * * *"}]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Собрать stats.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          get() { gh api "repos/$1/releases?per_page=20" 2>/dev/null || echo '[]'; }
+          get Kumolix/Mobilix-Launcher-for-Minecraft > a.json
+          get Kumolix/Mobilix-Launcher-PC > w.json
+          jq -n --slurpfile a a.json --slurpfile w w.json '
+            def slim: map({tag_name,name,published_at,html_url,body,draft,assets:(.assets|map({name,size,browser_download_url,download_count}))});
+            {updated:(now|todate),
+             android:{downloads:([$a[0][].assets[].download_count]|add // 0),releases:($a[0]|slim)},
+             win:{downloads:([$w[0][].assets[].download_count]|add // 0),releases:($w[0]|slim)}}' > stats.json
+          rm a.json w.json
+      - name: Закоммитить
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add stats.json
+          git diff --cached --quiet || (git commit -m "stats" && git push)
