@@ -92,6 +92,8 @@ body.is-win .cta{flex-direction:row-reverse;justify-content:flex-end}
 
 /* скриншоты */
 .shots .row{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.shots .row.wide{grid-template-columns:repeat(2,1fr)}
+.shots .row.wide figure:first-child{grid-column:1/-1;max-width:760px;margin:0 auto}
 figure{margin:0}
 .shot{padding:6px;background:var(--ink);box-shadow:6px 6px 0 var(--leaf)}
 .shot img{display:block;width:100%;height:auto}
@@ -155,6 +157,7 @@ footer a:hover{color:#7be394}
   .feats{grid-template-columns:1fr}
   .plats{grid-template-columns:1fr}
   .shots .row{grid-template-columns:repeat(2,1fr)}
+  .shots .row.wide{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr 1fr}
 }
 @media (max-width:560px){
