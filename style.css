@@ -53,10 +53,11 @@ body.is-win .cta{flex-direction:row-reverse;justify-content:flex-end}
 
 /* сцена: окно Windows + телефон */
 .stage{position:relative;height:460px}
-.win{position:absolute;left:0;top:34px;width:78%;background:var(--chalk);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.win{position:absolute;left:0;top:34px;width:84%;background:var(--chalk);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
 .win-bar{display:flex;align-items:center;gap:6px;height:30px;padding:0 10px;background:var(--ink);color:var(--chalk)}
 .win-bar i{width:9px;height:9px;background:#7f93b8}
 .win-bar b{margin-left:8px;font:600 12px var(--font)}
+.win-shot{display:block;width:100%;height:auto}
 .win-body{position:relative;display:grid;grid-template-columns:28% 1fr;gap:12px;padding:14px;height:250px;background:#f4faf5}
 .sk u{display:block;background:#dbe9de;height:14px;margin-bottom:10px}
 .sk.main .w{width:70%;height:20px;background:#c3dcc8}
