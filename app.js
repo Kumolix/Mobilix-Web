@@ -17,7 +17,7 @@ var EN={
  pl_t:"One launcher, two screens",pl_sub:"Android is ready. The desktop version is a separate app; you'll hear about its release here and in Telegram.",
  pl_a_st:"Available",pl_a_p:"Its own Java 21 and 25 launch, LWJGL and OpenGL on top of OpenGL ES, on-screen controls. Works on Android 9+ with an arm64 processor.",pl_a_btn:"Download APK",
  pl_w_st:"Coming soon",pl_w_p:"The same Mobilix for your computer: an .exe installer, versions and mods, the catalog. The first build lands in the next few days, and the download button on this page will switch on by itself.",pl_w_btn:"Follow the release",
- pc_t:"How it looks on a computer",pc1:"Home screen",pc2:"Versions: download, select, delete",pc3:"Modrinth and CurseForge catalog",pc4:"Your own themes",pc5:"Settings",sh_t:"How it looks on a phone",sh1:"Home screen",sh2:"Mod catalog",sh3:"Quick graphics settings",sh4:"Choosing a game version",
+ theme_t:"Theme: light / dark",pc_t:"How it looks on a computer",pc1:"Home screen",pc2:"Versions: download, select, delete",pc3:"Modrinth and CurseForge catalog",pc4:"Your own themes",pc5:"Settings",sh_t:"How it looks on a phone",sh1:"Home screen",sh2:"Mod catalog",sh3:"Quick graphics settings",sh4:"Choosing a game version",
  inst_t:"How to install",chg_t:"What's new",loading:"Loading versions…",faq_t:"Questions and answers",
  f_all:"All Android versions",f_bug:"Report a bug",f_priv:"Privacy",f_note:"Mobilix is not affiliated with Mojang or Microsoft. Minecraft is a trademark of Mojang AB.",
  fe:[["Own Java runtime","Java 21 and 25 ship inside the app. Nothing to install, no PojavLauncher."],
@@ -114,6 +114,7 @@ function applyLang(){
  document.title=lang==="en"?"Mobilix: Minecraft Java on phone and PC":"Mobilix: Minecraft Java на телефоне и ПК";
  renderFeats();renderSteps();renderFaq();renderDownloads();renderLog();
 }
+(function(){var b=document.getElementById("theme");if(!b)return;b.addEventListener("click",function(){var d=document.documentElement,n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;try{localStorage.setItem("mx-theme",n)}catch(e){}var m=document.querySelector("meta[name=theme-color]");if(m)m.content=n==="dark"?"#0b1710":"#edf6ee"})})();
 $$(".lang button").forEach(function(b){b.addEventListener("click",function(){lang=b.getAttribute("data-lang");try{localStorage.setItem("mx-lang",lang)}catch(e){}applyLang()})});
 
 /* вкладки */
